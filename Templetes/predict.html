@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hypothyroid Prediction Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f2f2f2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Hypothyroid Prediction Form</h2>
+    <form action="{% url 'predict' %}" method="POST">
+        {% csrf_token %}
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" step="any" id="age" name="age" required>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" required>
+          <option value="">Select</option>
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tsh">TSH</label>
+        <input type="text" step="any" id="tsh" name="tsh" required>
+      </div>
+
+      <div class="form-group">
+        <label for="t3">T3</label>
+        <input type="text" step="any" id="t3" name="t3" required>
+      </div>
+
+      <div class="form-group">
+        <label for="t4">T4</label>
+        <input type="text" step="any" id="t4" name="t4" required>
+      </div>
+
+      <div class="form-group">
+        <label for="t4u">T4U</label>
+        <input type="text" step="any" id="t4u" name="t4u" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fti">FTI</label>
+        <input type="text" step="any" id="fti" name="fti" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tsh_t3_ratio">TSH/T3 Ratio</label>
+        <input type="text" step="any" id="tsh_t3_ratio" name="tsh_t3_ratio" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tsh_t4_ratio">TSH/T4 Ratio</label>
+        <input type="text" step="any" id="tsh_t4_ratio" name="tsh_t4_ratio" required>
+      </div>
+
+      <div class="form-group">
+        <label for="t4_t3_ratio">T4/T3 Ratio</label>
+        <input type="text" step="any" id="t4_t3_ratio" name="t4_t3_ratio" required>
+      </div>
+
+      <div class="form-group">
+        <label for="age_tsh_interaction">Age * TSH Interaction</label>
+        <input type="text" step="any" id="age_tsh_interaction" name="age_tsh_interaction" required>
+      </div>
+
+      <button type="submit">Predict Hypothyroidism</button>
+    </form>
+  </div>
+</body>
+</html>
